@@ -1,0 +1,42 @@
+/* CSS Document */
+
+    .blog_header{margin-top:10px;}
+	.blog_header_top {height:60px;background:#F6F6F6;}  
+	.blog_header_logo{float:left;width:250px;height:60px;}
+	.blog_header_logo img{width:250px;height:60px;}
+	.blog_header_text {float:left;width:300px;margin-left:30px;}
+	.blog_header_name {float:left;font-size:50px;font-weight:bold;line-height:40px;padding-bottom:0px;padding-top: 2px;}
+	.blog_header_p {float:left;font-size:16px;line-height:20px;margin-top:0px;padding-top:0;padding-left:2px;}
+	.blog_header_blockquote {margin-top:7px;margin-right:15px;}
+	.blog_header_bottom {height:100px;border:1px solid red;}
+	.blog_header_bottom img {height:60px;width:980px;}
+
+
+
+    .blog_content{margin-top:10px;clear:both;border-bottom:2px solid #FF7200}
+
+	
+	/*内容区*/
+	.blog_content_content {float:left;width:660px;border:1px solid red}
+	     /*列表的样式*/
+	.blog_content_content .article{}
+	.blog_content_content .article .main{padding: 2px;}
+	.blog_content_content .article table{margin-bottom: 10px;}
+	.blog_content_content .article table th {border:1px solid red;text-align:center}
+	    /*列表下面的导航*/
+	.blog_content_content .article_nav {height: 38px;background:#F6F6F6;}
+	.blog_content_content .article .pagination {margin: 3px 0 0 10px;}
+	.blog_content_content .article .article_nav_page {float:left;border: 1px solid #ddd;height:33px;border-radius: 4px;background-color: #fff;margin:3px 0 0 10px;padding:0 4px;}
+	.blog_content_content .article .article_nav_page span{float:left;margin-top:6px;padding:0 3px;}
+	/*侧边栏*/
+	.blog_content_aside {float:left;width:300px;margin-right:20px;}
+	.blog_content_aside_search { height: 40px;margin-bottom:10px;background:#F6F6F6;}
+	.blog_content_aside_search_select {float:left;width:74px;height:20px;padding-left:6px;margin:10px 11px 0 0px;color:#282828;font-size:12px;border:1px solid #FF7200;}
+	.blog_content_aside_search_text {float:left;width:150px;height:20px;margin:10px 11px 0 0;border:1px solid #FF7200;padding-left:4px;font-size:12px;}
+    .blog_content_aside_search_btn {float:left;height:20px;margin:10px 0 0 0;border:1px solid #FF7200;background:#FF7200;color:#F6F6F6;line-height: 1px;padding-left:10px;padding-right:10px;}
+	.blog_content_aside_search_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	
+	
+	.blog_content_aside .blog_classify{border-radius: 0px;}
+	.blog_content_aside .blog_classify .panel-heading {height: 40px;padding-top: 10px;background-color: #F6F6F6;}
+	.blog_content_aside .blog_classify .list-group-item {padding: 8px 15px;}

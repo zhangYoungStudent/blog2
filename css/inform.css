@@ -1,0 +1,5 @@
+/* CSS Document */
+.blog_content{margin-top:10px;clear:both;}
+.blog_content .container {width:980px;margin:0 auto;padding:0;}
+.blog_content_content {margin:0 auto;width:960px;background-color: #F6F6F6;}
+.blog_content_content  .form-group {margin-right: 0;margin-left: 0;}

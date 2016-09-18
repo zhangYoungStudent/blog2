@@ -1,0 +1,70 @@
+/* CSS Document */
+
+
+	
+	.blog_header{margin-top:10px;}
+	.blog_header_top {height:60px;background:#F6F6F6;}  
+	.blog_header_logo{float:left;width:250px;height:60px;}
+	.blog_header_logo img{width:250px;height:60px;}
+	.blog_header_text {float:left;width:300px;margin-left:30px;}
+	.blog_header_name {float:left;font-size:50px;font-weight:bold;line-height:40px;padding-bottom:0px;padding-top: 2px;}
+	.blog_header_p {float:left;font-size:16px;line-height:20px;margin-top:0px;padding-top:0;padding-left:2px;}
+	.blog_header_blockquote {margin-top:7px;margin-right:15px;}
+	.blog_header_bottom {height:193px;}
+	.blog_header_bottom img {width:980px;height:60px;}
+	
+	.blog_content{margin-top:10px;clear:both;}
+	.blog_content_content {float:left;width:600px;margin-right:20px;}
+	
+	.blog_content_content_blog {border-radius: 0px;}
+	.blog_content_content_blog ul {width: 400px;margin-left: 0px;margin-bottom:0;}
+	.blog_content_content_blog .panel-heading {height: 40px;padding-top: 10px;background-color: #F6F6F6;}
+	
+	
+	.blog_content_content_blockquote {background:#F6F6F6;padding:15px;margin-bottom:15px;overflow:hidden;}
+	.blog_content_aside_blockquote_blockquote {height:80px;margin: 0 0 25px;}
+	
+	.blog_content_aside {float:left;width:360px;}
+	.blog_content_aside_search { height: 40px;margin-bottom:10px;background:#F6F6F6;}
+	.blog_content_aside_search_select {float:left;width:74px;height:20px;padding-left:6px;margin:10px 11px 0 0px;color:#282828;font-size:12px;border:1px solid #FF7200;}
+	.blog_content_aside_search_text {float:left;width:170px;height:20px;margin:10px 11px 0 0;border:1px solid #FF7200;padding-left:4px;font-size:12px;}
+
+    .blog_content_aside_search_btn {float:left;width:80px;height:20px;margin:10px 10px 0 0;border:1px solid #FF7200;background:#FF7200;color:#F6F6F6;line-height: 1px;padding:0;}
+	.blog_content_aside_search_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	/*侧边栏，第二部分，无序导航*/
+	.blog_content_aside_nav ul{}
+	.blog_content_aside_nav li{padding:0 8px;margin: 2px 2px;background:#F6F6F6;}
+	.blog_content_aside_nav li:hover {border:1px solid #FF7200;background:#fff;}
+	
+	/*侧边栏，第三部分*/
+	.blog_content_aside_blockquote {background:#F6F6F6;padding:15px;margin-bottom:15px;}
+	.blog_content_aside_blockquote blockquote {height:80px;margin: 0px 0 5px;}
+    
+	/*侧边栏，第四部分*/
+	.blog_content_aside .login {}
+	.blog_content_aside .login .panel-heading {height: 40px;padding-top: 10px;background-color: #F6F6F6;}
+	.blog_content_aside .login .login_main{padding:15px;}
+	.blog_content_aside .login input[type="text"]{width: 160px;height: 24px;padding-left: 8px;font-size: 12px;padding-top: 0px;margin-left: 20px;}
+	.blog_content_aside .login_group{margin-bottom: 10px;}
+	.blog_content_aside .login_btn{height: 24px;width: 60px;margin-left: 80px;font-size: 14px;padding-left: 13px;padding-top: 1px;}
+    
+	/*侧边栏，第五部分*/
+	.blog_content_aside .blog_classify{border-radius: 0px;}
+	.blog_content_aside .blog_classify .panel-heading {height: 40px;padding-top: 10px;background-color: #F6F6F6;}
+	.blog_content_aside .blog_classify .list-group-item {padding: 8px 15px;}
+
+    
+	.main {margin-top:10px;}
+	.float_right{float:right;}
+	.overflow{overflow:hidden;}
+	.margin_left {margin-left:-15px;}
+	.margin_left1 {margin-left:15px;}
+	.margin_right {margin-right:-15px;}
+	.padding0 {padding:0;}
+	
+
+	
+	
+
+	
+	
