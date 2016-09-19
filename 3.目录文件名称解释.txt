@@ -1,0 +1,74 @@
+
+
+blog 网站的总目录
+
+
+  common 存放各个页面可能用到的公共页面
+
+         blog_nav.asp          用于登录之后在各个页面最上面都会显示的栏目，进行前后台的跳转，退出
+
+		 header.asp            用于三个前台页面的页首设置
+
+		 footer.asp            用于三个前台页面，和部分后台页面的页尾设置 
+
+		  
+  css    存放各个页面链接的css
+
+         base.css 是每个页面都要引入的，其中包括index,clasify,content页面需要引入的header.asp和footer.asp，和其它页面均需引入的blog_nav.asp
+
+		 test.css 是测试样式，用于一些设置一些测试样式，最终的博客中肯定用不到，     凡是页面中某个地方显示的是不正常的红色（border_red）或者绿色（border_green）,都是来自这个页面
+
+		 index.css 是针对首页的样式设置
+
+		 classify.css 是针对文章列表页面的样式设置
+
+		 content.css 是针对文章内容页面的样式设置
+
+		 inform.css 针对用户信息列表的样式
+
+         其它css样式较少的页面，其css样式都放在了自己的页面<style>标签中
+		 
+
+  img    存放网站用到的图片（比如首页的聚焦图，博客文章中引入的图片，用户的图像，博客的logo等）
+
+
+  manage 该目录下存放manage.asp页面的分页面，因为manage.asp中的很多小的模块是通过分页面进行引入的
+
+         authorinform.asp      对应后台管理中的作者信息栏目
+
+		 blogsetmanage.asp     对应后台管理中的博客设置信息栏目
+
+         disnavmanage.asp      对应后台管理中的无序列表的管理栏目
+
+         essaymanage.asp       对应后台管理中的文章管理栏目
+
+         sloganmanage.asp      对应后台管理中的标语管理栏目
+
+		 visitorinform.asp     对应后台管理中的游客信息栏目
+
+		 outlinkmanage.asp     对应后台管理中的站外导航管理栏目
+		 
+		 
+  list.asp        列表页面，对文章进行排序显示
+  
+  common.asp      公共页面，里面包含一些共有的函数，有连接数据库，建立记录集，正则表达，分页的函数
+  
+  content.asp     文章内容页面，里面主要是展示文章，下面有评论区，当游客登录后，会显示提交评论的表单
+  
+  deal.asp        最重要的数据处理页面，如，用户的登录，注册，添加文章，评论，删除评论等 ，manage.asp中引入的页面中都是在自己页面处理数据
+  
+  author.asp      作者登录后的编辑页面，可以通过这个页面进行文章的编辑发表
+  
+  index.asp       首页
+  
+  inform.asp      用户信息页面，三种身份的人可以通过登录之后显示的blog_nav.asp页面，连接到本页面进行查看，修改自己的资料信息，数据提交到deal.asp
+  
+  login.asp       显示登录框和注册框的页面，如果用户是通过具体的文章页连接过来的，登录之后也会返回到该文章页面
+  
+  logout.asp      点击退出登录之后，跳转到该页面，进行退出处理，并返回到首页
+  
+  manage.asp      后台管理页面，主要功能由manage文件中的页面组成
+  
+  visitor.asp     游客登录之后的后台页面，在该页面可以申请成为作者，查看自己评论过哪些文章以及内容，可以删除
+  
+  

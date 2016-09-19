@@ -14,17 +14,21 @@
 
     
     .blog_content{margin-top:10px;clear:both;}
-	.blog_content_border_bottom {border-bottom:2px solid #FF7200}
-	.blog_content_content {float:left;width:660px;}
-	.blog_content_content .title {height: 46px;}
-	.blog_content_content .title h3{margin-top:0;text-align:center;}
-	.blog_content_content .panel-body {padding-top: 10px;}
-	.blog_content_content .panel-body small {float: right; margin-right: 18px;}
-	.blog_content_content .panel-body p {font-size: 18px;text-indent: 2em;margin-top: 20px;line-height: 26px;text-align: justify;letter-spacing: 0px;}
+
+	.blog_content_main {float:left;width:660px;}
+	.blog_content_main .title {height: 46px;}
+	.blog_content_main .title h3{margin-top:0;text-align:center;}
+	.blog_content_main .panel-body {padding-top: 10px;}
+	.blog_content_main .panel-body small {float: right; margin-left: 18px;}
+	.blog_content_main .panel-body p {font-size: 18px;text-indent: 2em;margin-top: 20px;line-height: 26px;text-align: justify;letter-spacing: 0px;}
 	
+	/*侧边栏，第一部分*/
 	.blog_content_aside {float:left;width:300px;margin-right:20px;}
-	.blog_content_aside_search { height: 40px;margin-bottom:10px;background:#F6F6F6;}
-	.blog_content_aside_search_select {float:left;width:74px;height:20px;padding-left:6px;margin:10px 11px 0 0px;color:#282828;font-size:12px;border:1px solid #FF7200;}
-	.blog_content_aside_search_text {float:left;width:150px;height:20px;margin:10px 11px 0 0;border:1px solid #FF7200;padding-left:4px;font-size:12px;}
-    .blog_content_aside_search_btn {float:left;height:20px;margin:10px 0 0 0;border:1px solid #FF7200;background:#FF7200;color:#F6F6F6;line-height: 1px;padding-left:10px;padding-right:10px;}
-	.blog_content_aside_search_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	.aside_search { height: 40px;margin-bottom:10px;background:#F6F6F6;}
+	.search_select {float:left;width:74px;height:20px;padding-left:6px;margin:10px 11px 0 0px;color:#282828;font-size:12px;border:1px solid #FF7200;}
+	.search_text {float:left;width:150px;height:20px;margin:10px 11px 0 0;border:1px solid #FF7200;padding-left:4px;font-size:12px;}
+    .search_btn {float:left;height:20px;margin:10px 0 0 0;border:1px solid #FF7200;background:#FF7200;color:#F6F6F6;line-height: 1px;padding-left:10px;padding-right:10px;}
+	.search_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	
+	/*评论区*/
+	.blog_comment {border-bottom:2px solid #FF7200}

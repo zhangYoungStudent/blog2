@@ -14,20 +14,20 @@
 <title>MAXXIS博客作者管理页面</title>
 </head>
 <body>
+<!--#include file="common.asp"-->
 <%
 if session("user_id")="" then
    response.Redirect "index.asp"
 else
 
-dim conn,rs,sql,count,user,action
+dim user
 dim username,sex,user_id
-set conn=server.CreateObject ("adodb.connection")
-conn.ConnectionString = "Provider=sqloledb.1;Server=10.30.1.99;uid=dev;pwd=dev;DATABASE=Development;"
-conn.Open 
 
-set rs = Server.CreateObject("ADODB.Recordset")
+datebase="Development"
+openconn conn,datebase 
+
 sql="select * from L_zhang_blog_username where user_id='"&session("user_id")&"'"
-rs.open sql,conn,1,1
+openrs conn,rs,sql
 
 username=rs("username")
 sex=rs("sex")

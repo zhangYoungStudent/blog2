@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 </head>
 <body>
+<!--#include file="common.asp"-->
 <%
-dim conn,rs,sql,count 'conn,rs,sql为连接数据库，conn为数据库中相应数据的条数
+
 dim id,qxian,action 'id数据库中的唯一标示,qxian表示权限，0为普通员工,action为其他页面提交过来的标示，表示要执行什么样的操作
 dim blog_title,classify_id,blog_content,blog_id,user_id,nowtime 'contetent表
 dim email,username,psword,staff_number 'email为登录邮箱,psword为密码,username用户昵称,staff_number员工编号
@@ -16,66 +17,14 @@ dim inform
 dim comment_id  'comment表
 dim remail,rpsword,rusername,rstaff_number'定义正则变量量，
 
-Sub openrs(conn,rs,sql)
-	 set rs = Server.CreateObject("ADODB.Recordset")
-	 rs.open sql,conn,1,1
-End Sub
-Sub closers(rs)
-	 rs.close
-	 set rs = nothing
-End Sub
 
-Sub CreatePageNumber(rs,CreatePageNumber_Page,url)
-	RecordCount=rs.recordcount
-	PageCount=rs.pagecount
-	response.Write "&nbsp;总&nbsp;"&RecordCount&"&nbsp;条记录&nbsp;&nbsp;共&nbsp;"&PageCount&"&nbsp;页&nbsp;"
-	NowStart=CreatePageNumber_Page-3
-	if NowStart<1 then
-		NowStart=1
-	end if
-	NowEnd=CreatePageNumber_Page+3
-	if NowEnd>PageCount then
-		NowEnd=PageCount
-	end if
-	if trim(url)<>"" then
-		url="&"&url
-	end if
-	response.write "<a href='?T_Page=1"&url&"'>最前页</a>"
-	for ipage=NowStart to NowEnd
-		if cstr(ipage)=cstr(CreatePageNumber_Page) then
-			response.write "&nbsp;<span style='color:#FF0000'>" & ipage &"</span>&nbsp;"
-		else
-			response.write "[<a href='?T_Page="&ipage&url&"'>" & ipage &"</a>]"
-		end if
-	next
-	response.write "<a href='?T_Page="&PageCount&url&"'>最后页</a>"
-End Sub
-
-'正则判断函数
-Function RegExpTest(patrn, strng)
-  Dim regEx,result 'Match, Matches      ' 建立变量。
-  Set regEx = New RegExp         ' 建立正则表达式。
-  regEx.Pattern = patrn         ' 设置模式。
-  regEx.IgnoreCase = True         ' 设置是否区分大小写。
-  regEx.Global = True         ' 设置全程可用性。
-  'Set Matches = regEx.Execute(strng)   ' 执行搜索。
-  'For Each Match in Matches      ' 遍历 Matches 集合。
-    'RetStr = RetStr & "匹配 " & I & " 位于 "
-    'RetStr = RetStr & Match.FirstIndex & "。匹配的长度为"
-    'RetStr = RetStr & Match.Length 
-    'RetStr = RetStr & "个字符。" & vbCRLF
-  'Next
-  'RegExpTest = RetStr
-   RegExpTest=regEx.Test(strng) 
-End Function
 'dim a
 'a=RegExpTest("^\w{1,20}@\w{1,5}.\w{1,5}$", email)
 'response.Write(a)
 'response.Write(request.QueryString("action"))
 action=trim(request.QueryString("action"))
-set conn=server.CreateObject ("adodb.connection")
-conn.ConnectionString = "Provider=sqloledb.1;Server=10.30.1.99;uid=dev;pwd=dev;DATABASE=Development;"
-conn.Open 
+datebase="Development"
+openconn conn,datebase 
 
 select case action
 case "denglu" '登录
@@ -261,8 +210,8 @@ case "ajax"
 case else
     response.Write("数据有误，请联系管理员")
 end select
-conn.close
-set conn=nothing
+
+closeconn conn
 %>
 </body>
 </html>

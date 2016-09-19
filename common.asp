@@ -22,9 +22,28 @@ Sub closers(rs)
 	 set rs = nothing
 End Sub
 
+'正则判断函数
+Function RegExpTest(patrn, strng)
+  Dim regEx,result 'Match, Matches      ' 建立变量。
+  Set regEx = New RegExp         ' 建立正则表达式。
+  regEx.Pattern = patrn         ' 设置模式。
+  regEx.IgnoreCase = True         ' 设置是否区分大小写。
+  regEx.Global = True         ' 设置全程可用性。
+  'Set Matches = regEx.Execute(strng)   ' 执行搜索。
+  'For Each Match in Matches      ' 遍历 Matches 集合。
+    'RetStr = RetStr & "匹配 " & I & " 位于 "
+    'RetStr = RetStr & Match.FirstIndex & "。匹配的长度为"
+    'RetStr = RetStr & Match.Length 
+    'RetStr = RetStr & "个字符。" & vbCRLF
+  'Next
+  'RegExpTest = RetStr
+   RegExpTest=regEx.Test(strng) 
+End Function
+
+
 '分页函数
 Sub createpage(actionurl,curpage,rs) %>
-	<div class="article_nav">
+
 		<!--列表分页导航-->
 		<ul class="pagination">
 		<%  if curpage<>1 then%>
@@ -55,7 +74,6 @@ Sub createpage(actionurl,curpage,rs) %>
 			   else %>
 				  <li><a href="#">...</a></li>
 		<%	   end if
-		
 		%>
 
 		<% end if
@@ -74,7 +92,7 @@ Sub createpage(actionurl,curpage,rs) %>
 		<div class="article_nav_page">
 		   <span><%=curpage%>当前页</span>
 		</div>
-	</div>
+		
 <%	
 End Sub
 

@@ -1,5 +1,4 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="936"%>
-<%'Response.Cookies("blog_id")="" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,35 +25,32 @@ openconn conn,datebase
 	</div>
 </div>
 	
-<div class="blog_content"><!--页面的主要内容信息,分为主要内容和侧边栏两块-->
-	<div class="container">
+<div class="blog_content container"><!--页面的主要内容信息,分为主要内容和侧边栏两块-->
 		<div class="blog_content_aside">
 			<!--侧边栏第一部分，用户搜索内容区域-->
-			<div class="blog_content_aside_search">
-				<form action="classify.asp?action=search" name="" class="" method="post">
-					<select name="identify" class="blog_content_aside_search_select" >
+			<div class="aside_search">
+				<form action="list.asp?action=search" name="" class="" method="post">
+					<select name="identify" class="search_select" >
 						 <option value="author">作者</option><option value="title">文章标题</option>
 					</select>
-					<input type="text" name="searchkeyword" class="blog_content_aside_search_text" autocomplete="off">
-					<input type="submit" value="sea" class="blog_content_aside_search_btn">
+					<input type="text" name="searchkeyword" class="search_text" autocomplete="off">
+					<input type="submit" value="sea" class="search_btn">
 				</form>
 			</div>
 			<!--侧边栏第四部分，其它博客文章分类-->
-			<div class="panel panel-success border_red clear">
+			<div class="panel panel-success border_red clear aside_classify">
 			    <div class="panel-heading">博客文章分类</div> 
 				<div class="list-group ">
 				<%
-				set rs = Server.CreateObject("ADODB.Recordset")
 			    sql="select c.classify_name,count(a.classify_id) as count from L_zhang_blog_classify c left join L_zhang_blog_content a   on a.classify_id=c.classify_id group by c.classify_name"
-			    rs.open sql,conn,1,1
+			    openrs conn,rs,sql
 				while not rs.eof %>
-				    <a href="classify.asp?action=classify&classify_name=<%=rs("classify_name")%>" class="list-group-item">
+				    <a href="list.asp?action=classify&classify_name=<%=rs("classify_name")%>" class="list-group-item">
 					<span class="badge"><%=rs("count")%></span><%=rs("classify_name")%>
 					</a>
 				<% rs.movenext '
 					wend
-					rs.close
-					set rs=nothing	
+				closers rs
 				%>
 				</div>
 			</div>
@@ -62,11 +58,11 @@ openconn conn,datebase
 		</div><!--侧边栏结束-->
 			
 		<!--文章内容区域-->
-		<div class="blog_content_content">
+		<div class="blog_content_main">
 	   <%   dim blog_id
 	        blog_id=request.QueryString("blog_id")
 	        if blog_id="" then '如果为空说明，用户是直接进入这个页面，直接跳转到分类页面
-			   response.Redirect("classify.asp")
+			   response.Redirect("list.asp")
 			end if 
 			sql="select a.*,b.username,c.classify_name from L_zhang_blog_content a,L_zhang_blog_username b,L_zhang_blog_classify c where a.user_id = b.user_id and a.classify_id=c.classify_id and blog_id='"&blog_id&"'"
 			openrs conn,rs,sql
@@ -84,18 +80,18 @@ openconn conn,datebase
 		   <!--面包屑导航-->
 		   <ul class="breadcrumb">
 				<li><a href="index.asp">首页</a></li>
-				<li><a href="classify.asp?action=classify&classify_name=<%=rs("classify_name")%>"><%=rs("classify_name")%></a></li>
+				<li><a href="list.asp?action=classify&classify_name=<%=rs("classify_name")%>"><%=rs("classify_name")%></a></li>
 				<li><%=rs("blog_title")%></li>
 			</ul>		   
 
-		    <div class="panel panel-default border_red"><!--用于设置文章的样式之用-->
+		    <div class="panel panel-default border_red main_article"><!--用于设置文章的样式之用-->
 		         
 			<%	if count<>"" then  %>
-			        <div class="panel-heading title"><h3><%=rs("blog_title")%></h3></div>
+			        <div class="panel-heading title"><h4><%=rs("blog_title")%></h4></div>
 					<div class="panel-body">
 					<small><%=rs("publish_time")%></small>
 					<small><%=rs("username")%></small>
-					<small>阅读量（<%=read_time%>）</small>
+					<small>阅读量(<%=read_time%>)</small>
 					
 			<%
 					dim blog_content,lenght,wordcount,page,curpage,acurpage
@@ -125,7 +121,7 @@ openconn conn,datebase
 					   </ul>
 					<%end if					
 			    else
-					 response.redirect "classify.asp?action=newest"
+					 response.redirect "list.asp?action=newest"
 				end if  %>
 	        </div>
 			<%
@@ -136,10 +132,8 @@ openconn conn,datebase
 			conn.execute(sql)%>	   
 		<!--文章内容区域结束-->	
 		</div>	
-
-	</div>
 	
-	<div class="container blog_content_border_bottom">
+	<div class="container blog_comment border_red clear">
 		<!--评论区-->
 		<%if session("user_id")<>"" then %>
 			 <!--评论区，评论提交表单-->
@@ -153,7 +147,7 @@ openconn conn,datebase
 				 </div>	
 			</form>
 		<%else %> 
-			如果要评论请<a href="login.asp?blog_id=<%=blog_id%>">登录</a>
+			<div ><p>如果要评论请<a href="login.asp?blog_id=<%=blog_id%>">登录</a></p></div>
 		<%end if%>
 			<table class="table">
 				 <tr><th>评论日期</th><th>评论人</th><th>评论内容</th></tr>

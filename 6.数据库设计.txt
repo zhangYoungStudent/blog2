@@ -1,0 +1,100 @@
+
+数据库设计
+
+数据库名叫development
+------------------------------------------------------------------------------------------------------------------
+命名规则，
+
+1、涉及到_time的均指该项内容录入数据库中的时间
+
+2、涉及到_qxian的均指该项内容的权限，为0时不显示，为1时显示
+
+3、涉及到_content的均跟具体的内容有关
+
+3、不同表中涉及到的相同字段的名称均是同等的意思，
+   比如，user_id,无论在哪个表中均代表使用者的id,blog_id无论在什么表中均代表具体的博客文章的id，
+         classify_id无论在哪个表中均代表博客分类的id标示，comment_id无论在哪个表中均表示某一条评论的id
+------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------
+依次为,表名,字段，字段解释
+
+1、用户表，      L_zhang_blog_username,
+                 user_id,email,staff_number,username,password,qxian，sex,login_time,hobby   
+		        （user_id(使用者注册时的id标示),邮箱，员工编号，用户昵称，密码，权限,注册时间，爱好）
+                 qxian,区分三种身份,0是为游客，1是为作者，2时为管理员
+				 
+2、文章表，      L_zhang_blog_content,
+                 blog_id,user_id,classify_id,blog_title,blog_content,publish_time,read_time, 
+                （blog_id(填写博客文章时的id标示)，user_id,classify_id，博客标题，博客内容，发表时间，阅读次数（！！））
+
+3、博客分类表，  L_zhang_blog_classify,
+                 classify_id,classify_name,classify_time
+		        （分类的id,分类的名称，录入数据库中的时间） 
+
+4、评论表，      L_zhang_blog_comment,
+                 comment_id,blog_id,user_id,comment_content,comment_time,
+                （评论的id,该文章的id,该用户的id,评论内容，录入数据库中的评论时间） 
+			
+5、连接表，      L_zhang_blog_link,存放首页上的站外连接
+                 link_id,link_url,link_name,link_time
+			     连接的id,具体连接的url（www.baidu.com）,要显示出来的名称(百度)，录入数据库中的时间
+
+6、图片表，      L_zhang_blog_image，存放网站各个页面的图片连接
+
+
+7、导航表，      L_zhang_blog_nav,存放网站首页侧边栏无序导航的信息
+                 nav_id,nav_name,nav_qxian
+                 导航的id,导航的名称，导航的权限，首页只读为1的数据进行显示，0的数据为默认不显示的数据
+
+8、设置表，      L_zhang_blog_set，存放跟博客显示有关的设置内容,博客的名称，副标题，列表栏中每页的数量，内容页面中每篇文章在每页里显示的字数
+                 id,name,value,explain
+            
+
+9、标语表，      L_zhang_blog_slogan，存放首页和其它页面用到的标语的表
+                 slogan_id,slogan_content,slogan_qxian,slogan_author,slogan_quote
+                 标语的id,标语的内容，标语的权限，标语的原作者（不是录入文章的作者），标语引用至什么地方
+                 标语是这个博客的特色，详细解释看 功能说明.txt
+				 
+------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------
+数据库查询语句
+1,qxian,为1,2,3可以使用bit int
+2,十个汉字，varchar(20)，当没有十个时也没有关系
+3，
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+测试语句
+insert into L_zhang_login (staffNumber,username,psword,qxian,dat) values ('2222','2222','5555','2','2016.8.8')
+select * from L_zhang_login
+
+博客内容表  a
+insert into L_zhang_blog_content (user_id,classify_id,blog_title,blog_content,publish_time,read_time) values ('1','1','第一篇博客','这是我的第一篇博客，大家来看看吧','2019.8.5','1')
+select top 3* from L_zhang_blog_content order by publish_time desc
+
+update L_zhang_blog_content set blog_title='第2篇博客',blog_content='这是我的第2篇博客，大家来看看吧',classify_id='3'where blog_id='2'
+select * from L_zhang_blog_content
+
+用户表  b
+insert into L_zhang_blog_username (email,staff_number,username,password,qxian) values ('755201244@qq.com','162631','一德','162631','2')
+select * from L_zhang_blog_username
+
+
+分类表  c
+insert into L_zhang_blog_classify (classify_name,classify_time) values ('医疗','2016.8.8')
+select * from L_zhang_blog_classify
+
+评论表   d
+insert into L_zhang_blog_comment (blog_id,user_id,comment_content,comment_time) values ('2','1','这是第四条博客评论','2015.4.5')
+select * from L_zhang_blog_comment
+
+
+
+select top 3 a.*,b.username as username from L_zhang_blog_content a,L_zhang_blog_username b where  a.user_id = b.user_id order by a.publish_time desc
+
+			
+首页查询，博客分类以及相应的数量
+select c.classify_name,count(a.classify_id) as count from L_zhang_blog_classify c left join L_zhang_blog_content a   on a.classify_id=c.classify_id group by c.classify_name
+------------------------------------------------------------------------------------------------------------------

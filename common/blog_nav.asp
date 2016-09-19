@@ -16,15 +16,15 @@ if session("user_id")<>"" then
    end if
 %>
 <div class="blog_nav">
-	<div class="container">
+     <div class="container">
 		<div class="logoname">maxxis</div>
 		<div class="loginname"><%=username%>ฤ๚บร</div>
 		<ul><li><a href="index.asp"><span class="glyphicon glyphicon-home"></span></a></li>
 			<li><a href="<%=url%>"><span class="glyphicon glyphicon-cog"></span></a></li>
 			<li><a href="inform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
-			<li><a href="logout.asp"><span class="glyphicon glyphicon-off"></span></a></div></li>
+			<li><a href="logout.asp"><span class="glyphicon glyphicon-off"></span></a></li>
 		</ul>
-	</div>
+	 </div>
 </div>
 <%
 end if

@@ -7,8 +7,6 @@
 <link href="css/base.css" rel="stylesheet" />
 <link href="css/classify.css" rel="stylesheet" />
 <link href="css/test.css" rel="stylesheet" />
-<style type="text/css">
-</style>
 <script src="../common/jquery-1.11.1.min.js"></script>
 <script src="../common/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
 <title>MAXXIS博客分类页面</title>
@@ -41,29 +39,26 @@ openconn conn,datebase
 	</div>
 </div>
 
-<div class="blog_content"><!--页面的主要内容信息,分为主要内容和侧边栏两块-->
-	<div class="container">
+<div class="blog_content container"><!--页面的主要内容信息,分为主要内容和侧边栏两块-->
 	    <!--侧边栏，包含搜索区域-->
 		<div class="blog_content_aside">
-			<!--侧边栏第一部分，用户搜索内容区域-->
-			<div class="blog_content_aside_search">
-				<form action="classify.asp?action=search" name="" class="" method="post">
-					<select name="identify" class="blog_content_aside_search_select" >
+			<div class="aside_search">
+				<form action="list.asp?action=search" name="" class="" method="post">
+					<select name="identify" class="search_select" >
 						 <option value="author">作者</option><option value="title">文章标题</option>
 					</select>
-					<input type="text" name="searchkeyword" class="blog_content_aside_search_text" autocomplete="off">
-					<button class="blog_content_aside_search_btn"><span class="glyphicon glyphicon-search"></span></button>
+					<input type="text" name="searchkeyword" class="search_text" autocomplete="off">
+					<button class="search_btn"><span class="glyphicon glyphicon-search"></span></button>
 				</form>
 			</div>
-			<!--侧边栏,博客文章分类-->
-			<div class="panel panel-success  blog_classify">
+			<div class="panel panel-success  aside_classify">
 				<div class="panel-heading">博客文章分类</div> 
 				<div class="list-group ">
 					<%
 					sql="select c.classify_name,count(a.classify_id) as count from L_zhang_blog_classify c left join L_zhang_blog_content a   on a.classify_id=c.classify_id group by c.classify_name"
 					openrs conn,rs,sql
 					while not rs.eof %>
-						<a href="classify.asp?action=classify&classify_name=<%=rs("classify_name")%>" class="list-group-item">
+						<a href="list.asp?action=classify&classify_name=<%=rs("classify_name")%>" class="list-group-item">
 						<span class="badge"><%=rs("count")%></span><%=rs("classify_name")%>
 						</a>
 					<% rs.movenext '
@@ -71,10 +66,9 @@ openconn conn,datebase
 					closers rs%>
 				</div>
 			</div>
-        <!--侧边栏结束-->
 		</div>
 		<!--文章列表区域-->
-		<div class="blog_content_content">
+		<div class="blog_content_main">
 		   <!--面包屑导航-->
 		   <ul class="breadcrumb">
 		       <li><a href="index.asp">首页</a></li>
@@ -119,6 +113,7 @@ openconn conn,datebase
 		   case "hottest"
 				 sql="select a.blog_id,a.blog_title,a.publish_time,a.read_time,b.username from L_zhang_blog_content a,L_zhang_blog_username b where a.user_id=b.user_id order by a.read_time desc"
 				 actionurl="action="&request.QueryString("action")
+		          
 		   case "search"
 		         dim tiaojian,tiaojian1,tiaojian2
 				 '查询条件从首页搜索框提交过来的时候是post,从首页无序导航链接过来的时候get，从本页面的其它页数相互之间跳转时也是使用get
@@ -144,16 +139,16 @@ openconn conn,datebase
 			   
 			   if count<>0 then%>
 			   <!--显示文章的信息-->
-			   <div class="article">
-					<div class="main">   
+			   <div class="main_article">
+					<div class="article_content">   
 						<table class="table">
 							<tr><th class="thcenter">序号</th><th>文章标题</th><th>作者</th><th>发表时间</th><th>阅读量</th></tr>
 							<%	
 							  sql="select value from L_zhang_blog_set where name='colnumber'"
 							  openrs conn,rs1,sql
-							  rs.pagesize=rs1("value") 
+							  'rs.pagesize=rs1("value") 
 							  closers rs1	   
-							'rs.pagesize=1 '每页显示10条
+							rs.pagesize=1 '每页显示10条
 							curpage=request.QueryString("curpage") '获取页数，如果是其它页面过来的则curpage为空
 							if curpage="" then
 							   curpage=1
@@ -178,45 +173,17 @@ openconn conn,datebase
 							next  	  
 							%>
 						</table>
-					</div> 
-					<%createpage actionurl,curpage,rs %>
-				</div>		   
+					</div>
+					<div class="article_nav"> 
+						<%createpage actionurl,curpage,rs %>
+					</div>
+			   </div>		   
 			<%  end if%>
-				
 			<%	closers rs
-
 		   end if %> 
-		   
-	    </div><!--文章列表区域结束-->	
-	</div>
+	    </div>	
 </div>
-<!--页面的尾部，一部分放置版权等信息，另一部分放置一句话标语-->
-<div class="blog_footer">
-    <div class="container">
-			<div class="border_red blog_footer_coperight">
-			    <ul><li><span class="glyphicon glyphicon-globe"></span>关于我们</li>
-				    <li><span class="glyphicon glyphicon-envelope"></span>755201244@qq.com</li>
-				    
-				</ul>
-				<ul>
-				    <li><span class="glyphicon glyphicon-envelope"></span>755201244@qq.com</li>
-				    <li><span class="glyphicon glyphicon-phone-alt"></span>0358-5353265</li>
-					<li><span class="glyphicon glyphicon-map-marker"></span>中国昆山合丰路</li>
-					<li><span class="glyphicon glyphicon-copyright-mark"></span>正新橡胶</li>
-				</ul>
-			</div>
-			<div class="blog_footer_blockquote">
-				<blockquote class="pull-right">
-					<%sql="select top 1 slogan_content,slogan_author from L_zhang_blog_slogan where slogan_qxian ='4'"
-					  openrs conn,rs,sql
-					  response.Write("<p>"&rs("slogan_content")&"</p>")
-					  response.Write("<small>"&rs("slogan_author")&"</small>")
-					  closers rs%>
-				</blockquote>
-			</div>
-		</div>
-	</div>
-</div>
+<!--#include file="common/footer.asp"-->
 <%closeconn conn %>
 </body>
 </html>

@@ -45,7 +45,7 @@ End Sub
 		<div class="loginname"><%=username%>您好</div>
 		<ul><li><a href="index.asp"><span class="glyphicon glyphicon-home"></span></a></li>
 			<li><a href="<%=url%>"><span class="glyphicon glyphicon-cog"></span></a></li>
-			<li><a href="inform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="userinform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
 			<li><a href="logout.asp"><span class="glyphicon glyphicon-off"></span></a></div></li>
 		</ul>
 	</div>
@@ -56,7 +56,7 @@ End Sub
 			<div class="panel-heading">管理内容分类</div> 
 			<div class="list-group ">
 				<a  href="#" class="list-group-item" data-toggle="collapse" data-target="#table">查看评论</a>
-				<a  href="user.asp?user=apply" class="list-group-item">申请作者</a>
+				<a  href="visitor.asp?user=apply" class="list-group-item">申请作者</a>
 				<a  href="#" class="list-group-item">其它</a>
 			</div>
 		</div>

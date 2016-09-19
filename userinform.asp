@@ -66,7 +66,7 @@ closers rs
 		<div class="loginname"><%=username%>ฤ๚บร</div>
 		<ul><li><a href="index.asp"><span class="glyphicon glyphicon-home"></span></a></li>
 			<li><a href="<%=url%>"><span class="glyphicon glyphicon-cog"></span></a></li>
-			<li><a href="inform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="userinform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
 			<li><a href="logout.asp"><span class="glyphicon glyphicon-off"></span></a></div></li>
 		</ul>
 	</div>

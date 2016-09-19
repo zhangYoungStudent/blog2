@@ -62,31 +62,20 @@ $("document").ready(function(){
 	
 });
 
-
-
-	
-
-
-
-
-
 </script>
 <title>MAXXIS博客编辑管理员管理页面</title>
 </head>
 <!--#include file="common.asp"-->
 <% 
-datebase="Development"
-openconn conn,datebase 
-
 if session("user_id")="" then
    response.Redirect "index.asp"
 else
 
 dim user,action
 dim username,sex,user_id
-set conn=server.CreateObject ("adodb.connection")
-conn.ConnectionString = "Provider=sqloledb.1;Server=10.30.1.99;uid=dev;pwd=dev;DATABASE=Development;"
-conn.Open 
+
+datebase="Development"
+openconn conn,datebase 
 
 sql="select * from L_zhang_blog_username where user_id='"&session("user_id")&"'"
 openrs conn,rs,sql
@@ -104,7 +93,7 @@ closers rs
 		<div class="loginname"><%=username%>您好</div>
 		<ul><li><a href="index.asp"><span class="glyphicon glyphicon-home"></span></a></li>
 			<li><a href="<%=url%>"><span class="glyphicon glyphicon-cog"></span></a></li>
-			<li><a href="inform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="userinform.asp"><span class="glyphicon glyphicon-user"></span></a></li>
 			<li><a href="logout.asp"><span class="glyphicon glyphicon-off"></span></a></div></li>
 		</ul>
 	</div>
@@ -121,6 +110,7 @@ closers rs
 				<a  href="#" class="list-group-item" id="table41">博客设置管理</a>
 				<a  href="#" class="list-group-item" id="table51">标语管理</a>
 				<a  href="#" class="list-group-item" id="table61">无序导航管理</a>
+				<a  href="#" class="list-group-item" id="table71">首页站外连接管理</a>
 			</div>
 		</div>
 	</div>
@@ -168,7 +158,12 @@ closers rs
 			</iframe>
 		</div>	
 			
-			
+		<!--首页站外连接管理-->
+		<div class="panel panel-success">
+			<div class="panel-heading ">站外连接管理</div>
+			<iframe src="manage/outlinkmanage.asp"  width="840" height="200" frameborder="0"scrolling="no"class="displaynone blog_content_content_author_content" id="table6">
+			</iframe>
+		</div>	
 		
 	</div>
 

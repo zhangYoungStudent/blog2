@@ -1,0 +1,58 @@
+/* CSS Document */
+
+
+	
+	.blog_header{margin-top:10px;}
+	.blog_header_top {height:60px;background:#F6F6F6;}  
+	.blog_header_logo{float:left;width:250px;height:60px;}
+	.blog_header_logo img{width:250px;height:60px;}
+	.blog_header_text {float:left;width:300px;margin-left:30px;}
+	.blog_header_name {float:left;font-size:50px;font-weight:bold;line-height:40px;padding-bottom:0px;padding-top: 2px;}
+	.blog_header_name a{color:#333;}
+	.blog_header_name a:hover {color:#FF7200;}
+	.blog_header_p {float:left;font-size:16px;line-height:20px;margin-top:0px;padding-top:0;padding-left:2px;}
+
+	.blog_header_carousel {height:193px;}
+	.blog_header_carousel img {height:60px;}
+	
+	.blog_content{margin-top:10px;clear:both;}
+	.zzz{}/*加上这个下面的内容才能正常使用，不知道为什么*/
+	.blog_content_main {padding-right:20px;}
+
+	.blog_content_main .main_blog ul {width: 400px;margin-left: 0px;margin-bottom:0;}
+	
+	.blog_content_aside {}
+	/*侧边栏，第一部分*/
+	.aside_search { height: 40px;margin-bottom:10px;background:#F6F6F6;}
+	.aside_search .search_select {height:20px;padding-left:6px;margin:10px 11px 0 0px;color:#282828;font-size:12px;border:1px solid #FF7200;}
+	.aside_search .search_text {height:20px;margin: 10px 11px 0 15px;border:1px solid #FF7200;padding-left:4px;font-size:12px;}
+    .aside_search .search_btn {height:20px;margin:10px 11px 0 15px;border:1px solid #FF7200;background:#FF7200;color:#F6F6F6;line-height: 1px;padding:0;}
+	.blog_content_aside .aside_search .search_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	/*侧边栏，第二部分，无序导航*/
+	.aside_nav ul{}
+	.aside_nav li{padding:0 8px;margin: 2px 2px;background:#F6F6F6;}
+	.aside_nav li:hover {border:1px solid #FF7200;background:#fff;}
+	/*侧边栏，第三部分*/
+	
+	/*侧边栏，第四部分*/
+	.aside_login {}
+	.aside_login .login_main{padding:15px;}
+	.aside_login input[type="text"]{width: 160px;height: 24px;padding-left: 8px;font-size: 12px;padding-top: 0px;margin-left: 20px;}
+	.aside_login .login_group{margin-bottom: 10px;}
+	.aside_login .login_btn{height: 24px;width: 60px;margin-left: 81px;font-size: 14px;padding-left: 14px;padding-top: 1px;border-radius: 0px;background:#FF7200;border:1px solid #FF7200;letter-spacing: 4px;}
+	.aside_login .login_btn:hover{border:1px solid #FF7200;background:#F6F6F6;color:#FF7200;}
+	/*侧边栏，第五部分*/
+
+
+.blog_footer {margin-top:10px;margin-bottom:10px;background:#F6F6F6;overflow:hidden;height:150px;}
+
+.blog_footer li {height: 26px;float: left;width: 200px;}
+.blog_footer span {float: left;margin-right: 6px;margin-top: 1px;}
+.blog_footer blockquote {margin-top:35px;}
+	
+
+	
+	
+
+	
+	
